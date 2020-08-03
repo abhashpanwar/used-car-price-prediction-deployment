@@ -1,0 +1,47 @@
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+        <title>WELCOME</title>
+    </head>
+    <style>
+        body
+        {
+            
+            background-color:rgb(220, 231, 208);
+            
+        }
+        .header
+        {
+            width: -webkit-fill-available;
+            height: fit-content;
+        }
+        .container
+        {
+            background-color: white;
+        }
+        .result
+        {
+            color: green;
+            border: 2px lightblue dotted;
+            text-align: center;
+            padding: 10px;
+            
+            margin-bottom: 50px;
+        }
+        
+    </style>
+    <body>
+        <div class="header" >
+            <img src="{% static 'thumbnail2.png' %}" width="100%"/>
+        </div>
+        
+        <div class="container">
+        {% block content %}
+        {% endblock%}
+        </div>
+    </body>
+</html>

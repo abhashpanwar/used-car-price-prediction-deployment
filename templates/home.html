@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if data.price%}
+<h1 class="result">Predicted price of your car is {{data.price}} &#36;</h1>
+{% endif%}
+<h1>Fill the form to predict the price of your car:</h1>
+<form action="predict" method="POST">
+    {% csrf_token%}
+    <div class="row">
+        <div class="col-md-4 form-group">
+            <label for="exampleInputEmail1">Select Manufacturer:</label>
+            <select class="form-control" name="manufacturer">{%  for i in data.manufacturer%} <option value="{{forloop.counter}}">{{i}}</option> {%endfor%}</select> <br/>
+        </div>
+        <div class="col-md-4 form-group">
+            <label for="exampleInputEmail1">Select Condition:</label>
+            <select class="form-control" name="condition">{%  for i in data.condition%} <option value="{{forloop.counter}}">{{i}}</option> {%endfor%}</select> <br/>
+        </div>
+        <div class="col-md-4 form-group">
+            <label for="fuel">Select fuel type:</label>
+            <select class="form-control" name="fuel">{%  for i in data.fuel%} <option value="{{forloop.counter}}">{{i}}</option> {%endfor%}</select> <br/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 form-group">
+            <label for="size">Select size:</label>
+            <select class="form-control" name="size">{%  for i in data.size%} <option value="{{forloop.counter}}">{{i}}</option> {%endfor%}</select> <br/>
+        </div>
+        <div class="col-md-4 form-group">
+            <label for="fuel">Select type:</label>
+            <select class="form-control" name="type">{%  for i in data.type%} <option value="{{forloop.counter}}">{{i}}</option> {%endfor%}</select> <br/>
+        </div>
+        
+        <div class="col-md-4 form-group">
+            <label for="transmission">Select transmission:</label>
+            <select class="form-control" name="transmission">{%  for i in data.transmission%} <option value="{{forloop.counter}}">{{i}}</option> {%endfor%}</select> <br/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label for="size">Select color:</label>
+            <select class="form-control" name="paint_color">{%  for i in data.paint_color%} <option value="{{forloop.counter}}">{{i}}</option> {%endfor%}</select> <br/>
+        </div>
+        <div class="col-md-6 form-group">
+            <label for="fuel">Select type:</label>
+            <select class="form-control" name="type">{%  for i in data.type%} <option value="{{forloop.counter}}">{{i}}</option> {%endfor%}</select> <br/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label for="fuel">Select drive:</label>
+            <select class="form-control" name="drive">{%  for i in data.drive%} <option value="{{forloop.counter}}">{{i}}</option> {%endfor%}</select> <br/>
+        </div>
+        <div class="col-md-6 form-group">
+            <label for="cylinders">Select cylinders:</label>
+            <select class="form-control" name="cylinders">{%  for i in data.cylinders%} <option value="{{forloop.counter}}">{{i}}</option> {%endfor%}</select> <br/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label for="fuel">Enter purchased year:</label>
+            <input type="number" class="form-control" name="year" required/>
+        </div>
+        <div class="col-md-6 form-group">
+            <label for="cylinders">Enter odometer (in miles):</label>
+            <input type="number" class="form-control" name="odometer"  required/>
+        </div>
+    </div>    
+    <input type="submit" class="btn btn-info" name="submit" value="SUBMIT"/>
+    <a href="/" class="btn btn-danger">RESET</a>
+</form>
+
+{% endblock%}
