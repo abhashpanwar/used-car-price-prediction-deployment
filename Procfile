@@ -1,1 +1,2 @@
-web: gunicorn used_car_price_prediction.wsgi
+web: gunicorn deploy.wsgi
+

@@ -2,30 +2,25 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.templatetags.static import static
 import os
-import numpy as np
-import pandas as pd
-from sklearn.preprocessing import StandardScaler
-import xgboost as xgb
-import pickle
 
-workpath = os.path.dirname(os.path.abspath(__file__))
-        
-vehiclefile= os.path.join(workpath, 'vehiclesFinal.csv')
-scalerfile= os.path.join(workpath, 'StandardScaler.sav')
-modelfile= os.path.join(workpath, 'XGBoostDeploy.sav')
 
-df=pd.read_csv(vehiclefile)
-cat_cols=['manufacturer','condition','cylinders','fuel','transmission','drive','size','type','paint_color']
 
-temp={}
-for i in cat_cols:
-        temp[i]=df[i].unique().flatten() 
 # Create your views here.
 def home(request):
-        temp={}
-        for i in cat_cols:
-                temp[i]=df[i].unique().flatten() 
-        return render(request,'home.html',{'data':temp});
+	import numpy as np
+	import pandas as pd
+	from sklearn.preprocessing import StandardScaler
+	import xgboost as xgb
+	import pickle
+	workpath = os.path.dirname(os.path.abspath(__file__))
+	vehiclefile= os.path.join(workpath, 'vehiclesFinal.csv')
+	df=pd.read_csv(vehiclefile)
+	cat_cols=['manufacturer','condition','cylinders','fuel','transmission','drive','size','type','paint_color']
+
+	temp={}
+	for i in cat_cols:
+		temp[i]=df[i].unique().flatten() 
+	return render(request,'home.html',{'data':temp});
 
 def predict(request):
         
